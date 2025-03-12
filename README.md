@@ -20,4 +20,5 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 ## 🛠️Technologies Used:
 
 ✅ Next.js (App Router)
+
 🎨 Tailwind CSS (for styling)
