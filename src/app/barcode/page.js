@@ -1,7 +1,6 @@
 "use client"; // Needed for interactive components in Next.js App Router
 
 import { useState } from "react";
-import BarcodeScannerComponent from "react-qr-barcode-scanner";
 
 export default function BarcodeScannerPage() {
   const [data, setData] = useState("No result");
@@ -12,13 +11,13 @@ export default function BarcodeScannerPage() {
 
       {/* Scanner Component */}
       <div className="bg-white shadow-lg rounded-lg p-6">
-        <BarcodeScannerComponent
+        {/* <BarcodeScannerComponent
           width={300}
           height={200}
           onUpdate={(err, result) => {
             if (result) setData(result.text);
           }}
-        />
+        /> */}
         <p className="mt-4 text-lg">Scanned Code: <strong>{data}</strong></p>
       </div>
     </div>
