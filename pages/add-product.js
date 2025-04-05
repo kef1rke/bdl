@@ -14,6 +14,28 @@ export default function AddProduct() {
   });
   const router = useRouter();
 
+  const parseScannedData = (data) => {
+    // Check if data is in QR code format: "Product Name; Barcode; ExpirationDate"
+    if (data.includes(';')) {
+      const parts = data.split(';').map(part => part.trim());
+      if (parts.length === 3) {
+        return {
+          name: parts[0],
+          barcode: parts[1],
+          expirationDate: formatDate(parts[2])
+        };
+      }
+    }
+    // If not QR code format, treat as simple barcode
+    return { barcode: data };
+  };
+
+  const formatDate = (dateString) => {
+    // Convert from "DD/MM/YYYY" to "YYYY-MM-DD" format
+    const [day, month, year] = dateString.split('/');
+    return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+  };
+
   useEffect(() => {
     if (mode === 'scan' && typeof window !== 'undefined') {
       const initScanner = async () => {
@@ -29,14 +51,19 @@ export default function AddProduct() {
 
         scanner.render(
           (result) => {
-            setScanResult(result);
-            setProduct(prev => ({ ...prev, barcode: result }));
-            setIsScanning(false);
             scanner.clear();
+            const parsedData = parseScannedData(result);
+
+            setProduct(prev => ({
+              ...prev,
+              name: parsedData.name || prev.name,
+              barcode: parsedData.barcode || prev.barcode,
+              expirationDate: parsedData.expirationDate || prev.expirationDate,
+            }));
+            setScanResult(result);
+            setIsScanning(false);
           },
-          (error) => {
-            console.error('Scanner error:', error);
-          }
+          (error) => console.warn('Error scanning:', error)
         );
       };
 
@@ -114,7 +141,7 @@ export default function AddProduct() {
               onClick={() => setMode('scan')}
               className={`flex-1 py-2 font-medium text-sm ${mode === 'scan' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-gray-700'}`}
             >
-              Scan Barcode
+              Scan Barcode/QR Code
             </button>
           </div>
 
