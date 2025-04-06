@@ -11,11 +11,11 @@ export default function AddProduct() {
     barcode: '',
     quantity: 1,
     expirationDate: '',
+    enableNotifications: true,
   });
   const router = useRouter();
 
   const parseScannedData = (data) => {
-    // Check if data is in QR code format: "Product Name; Barcode; ExpirationDate"
     if (data.includes(';')) {
       const parts = data.split(';').map(part => part.trim());
       if (parts.length === 3) {
@@ -26,12 +26,10 @@ export default function AddProduct() {
         };
       }
     }
-    // If not QR code format, treat as simple barcode
     return { barcode: data };
   };
 
   const formatDate = (dateString) => {
-    // Convert from "DD/MM/YYYY" to "YYYY-MM-DD" format
     const [day, month, year] = dateString.split('/');
     return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
   };
@@ -80,7 +78,6 @@ export default function AddProduct() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Basic validation
     if (!product.name || !product.barcode) {
       alert('Please fill in all required fields');
       return;
@@ -129,7 +126,6 @@ export default function AddProduct() {
         <div className="bg-white p-6 rounded-lg shadow-md">
           <h1 className="text-2xl font-bold text-gray-800 mb-6">Add New Product</h1>
           
-          {/* Mode Selection */}
           <div className="flex mb-6 border-b border-gray-200">
             <button
               onClick={() => setMode('manual')}
@@ -145,7 +141,6 @@ export default function AddProduct() {
             </button>
           </div>
 
-          {/* Barcode Scanner */}
           {mode === 'scan' && (
             <div className="mb-6">
               <div 
@@ -161,7 +156,6 @@ export default function AddProduct() {
             </div>
           )}
 
-          {/* Product Form */}
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
@@ -222,6 +216,18 @@ export default function AddProduct() {
                   className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-gray-800"
                 />
               </div>
+            </div>
+            <div className="mb-4">
+              <label className="flex items-center text-black">
+                <input
+                  type="checkbox"
+                  name="enableNotifications"
+                  checked={product.enableNotifications !== false} // Default true
+                  onChange={(e) => setProduct({...product, enableNotifications: e.target.checked})}
+                  className="mr-2"
+                />
+                Receive expiration reminders
+              </label>
             </div>
 
             <div className="mt-6">

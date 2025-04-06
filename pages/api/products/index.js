@@ -8,7 +8,9 @@ export default async function handler(req, res) {
     case 'POST':
       const product = {
         ...req.body,
-        quantity: parseInt(req.body.quantity, 10)
+        quantity: parseInt(req.body.quantity, 10),
+        notificationSent: false,
+        enableNotifications: req.body.enableNotifications || true
       };
       await db.collection('products').insertOne(product);
       res.status(201).json({ message: 'Product added successfully' });
