@@ -110,7 +110,7 @@ export default function Inventory() {
   };
 
   return (
-    <div className="min-h-screen bg-green-200">
+    <div className="min-h-screen bg-[url('https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2160&q=80')] bg-cover bg-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-6">
           <Link href="/" className="inline-flex items-center text-blue-600 hover:text-blue-800">
@@ -161,26 +161,6 @@ export default function Inventory() {
                   />
                 </div>
               </div>
-
-              {/* Category Filter */}
-              <div>
-                <label htmlFor="category" className="sr-only">Category</label>
-                <select
-                  id="category"
-                  className="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-black sm:text-sm rounded-md"
-                  value={filters.category}
-                  onChange={(e) => setFilters({...filters, category: e.target.value})}
-                >
-                  <option value="all">All Categories</option>
-                  <option value="dairy">Dairy</option>
-                  <option value="meat">Meat</option>
-                  <option value="vegetables">Vegetables</option>
-                  <option value="fruits">Fruits</option>
-                  <option value="beverages">Beverages</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-
               {/* Stock Level Filter */}
               <div>
                 <label htmlFor="stockLevel" className="sr-only">Stock Level</label>

@@ -71,7 +71,7 @@ export default function ShoppingList() {
                     type="number"
                     value={threshold}
                     onChange={(e) => setThreshold(Number(e.target.value))}
-                    className="w-20 px-3 py-2 border border-gray-300 rounded-md text-center"
+                    className="w-20 px-3 py-2 border border-gray-300 rounded-md text-black text-center"
                   />
                 </div>
               </div>
