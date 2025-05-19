@@ -14,7 +14,6 @@ export default function Inventory() {
   });
   const [sortOption, setSortOption] = useState('name-asc');
 
-  // Fetch products
   useEffect(() => {
     const fetchProducts = async () => {
       const response = await fetch('/api/products');
@@ -25,11 +24,9 @@ export default function Inventory() {
     fetchProducts();
   }, []);
 
-  // Apply filters, search, and sorting
   useEffect(() => {
     let result = [...products];
     
-    // Apply search
     if (searchTerm) {
       result = result.filter(product => 
         product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -37,7 +34,6 @@ export default function Inventory() {
       );
     }
     
-    // Apply filters
     if (filters.category !== 'all') {
       result = result.filter(product => product.category === filters.category);
     }
@@ -75,7 +71,6 @@ export default function Inventory() {
       }
     }
     
-    // Apply sorting
     switch(sortOption) {
       case 'name-asc':
         result.sort((a, b) => a.name.localeCompare(b.name));
@@ -131,7 +126,6 @@ export default function Inventory() {
         </div>
 
         <div className="bg-white shadow rounded-lg overflow-hidden">
-          {/* Header */}
           <div className="px-6 py-5 border-b border-gray-200">
             <h1 className="text-2xl font-bold text-gray-800">Inventory Management</h1>
             <p className="mt-1 text-sm text-gray-600">
@@ -139,10 +133,8 @@ export default function Inventory() {
             </p>
           </div>
 
-          {/* Search and Filter Section */}
           <div className="px-6 py-4 bg-gray-50 border-b border-gray-200">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              {/* Search Bar */}
               <div className="md:col-span-1">
                 <label htmlFor="search" className="sr-only">Search</label>
                 <div className="relative rounded-md shadow-sm">
@@ -161,7 +153,6 @@ export default function Inventory() {
                   />
                 </div>
               </div>
-              {/* Stock Level Filter */}
               <div>
                 <label htmlFor="stockLevel" className="sr-only">Stock Level</label>
                 <select
@@ -177,7 +168,6 @@ export default function Inventory() {
                 </select>
               </div>
 
-              {/* Expiration Filter */}
               <div>
                 <label htmlFor="expiration" className="sr-only">Expiration</label>
                 <select
@@ -194,7 +184,6 @@ export default function Inventory() {
               </div>
             </div>
 
-            {/* Sorting Controls */}
             <div className="mt-4 flex items-center">
               <span className="mr-2 text-sm text-gray-600">Sort by:</span>
               <select
@@ -212,7 +201,6 @@ export default function Inventory() {
             </div>
           </div>
 
-          {/* Products Table */}
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">

@@ -1,4 +1,3 @@
-// pages/index.js
 import Link from 'next/link';
 import Head from 'next/head';
 
@@ -10,12 +9,9 @@ export default function Home() {
         <meta name="description" content="Track your pantry items efficiently" />
       </Head>
       <div className="min-h-screen bg-[url('https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2160&q=80')] bg-cover bg-fixed bg-center">
-        {/* Overlay */}
         <div className="absolute inset-0 bg-black bg-opacity-30 backdrop-blur-sm"></div>
         
-        {/* Content Container */}
         <div className="relative z-10">
-          {/* Navigation Bar */}
           <nav className="bg-white/80 backdrop-blur-md shadow-sm">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex justify-between h-16 items-center">
@@ -50,7 +46,6 @@ export default function Home() {
             </div>
           </nav>
 
-          {/* Hero Section */}
           <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <div className="text-center">
               <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6 drop-shadow-lg">
@@ -62,7 +57,6 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Feature Cards */}
             <div className="mt-12 grid gap-5 max-w-lg mx-auto lg:grid-cols-3 lg:max-w-none">
               {[
                 {
@@ -124,7 +118,6 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Quick Actions */}
             <div className="mt-16 bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-lg">
               <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Quick Actions</h2>
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -235,7 +228,6 @@ export default function Home() {
             </div>
           </main>
 
-          {/* Footer */}
           <footer className="bg-white/80 backdrop-blur-md mt-12">
             <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
               <p className="text-center text-xs text-gray-600">

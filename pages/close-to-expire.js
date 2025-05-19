@@ -19,7 +19,6 @@ export default function CloseToExpire() {
     fetchCloseToExpireProducts();
   }, []);
 
-  // Calculate days until expiration
   const getDaysUntilExpiration = (expirationDate) => {
     const today = new Date();
     const expDate = new Date(expirationDate);
@@ -31,7 +30,6 @@ export default function CloseToExpire() {
     <div className="min-h-screen bg-[url('https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2160&q=80')] bg-cover bg-center">
       <div className="backdrop-blur-sm bg-black/30 min-h-screen">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          {/* Back to Home Button */}
           <div className="mb-6">
             <Link href="/" legacyBehavior>
               <a className="inline-flex items-center text-white hover:text-blue-200">
@@ -52,9 +50,7 @@ export default function CloseToExpire() {
             </Link>
           </div>
 
-          {/* Main Content */}
-          <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-2xl p-6 sm:p-8">
-            {/* Header */}
+\          <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-2xl p-6 sm:p-8">
             <div className="mb-8">
               <h1 className="text-3xl font-bold text-gray-800">Products Close to Expiration</h1>
               <p className="mt-2 text-gray-600">
@@ -62,7 +58,6 @@ export default function CloseToExpire() {
               </p>
             </div>
 
-            {/* Products List */}
             <div className="overflow-hidden rounded-lg shadow ring-1 ring-black ring-opacity-5">
               {closeToExpireProducts.length === 0 ? (
                 <div className="text-center py-12 bg-gray-50">
@@ -158,7 +153,6 @@ export default function CloseToExpire() {
               )}
             </div>
 
-            {/* Action Buttons */}
             {closeToExpireProducts.length > 0 && (
               <div className="mt-6 flex justify-end space-x-3">
                 <button

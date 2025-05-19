@@ -20,7 +20,6 @@ export default function ShoppingList() {
     <div className="min-h-screen bg-[url('https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2160&q=80')] bg-cover bg-center">
       <div className="backdrop-blur-sm bg-black/30 min-h-screen">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          {/* Back to Home Button */}
           <div className="mb-6">
             <Link href="/" legacyBehavior>
               <a className="inline-flex items-center text-white hover:text-blue-200">
@@ -41,9 +40,7 @@ export default function ShoppingList() {
             </Link>
           </div>
 
-          {/* Main Content */}
           <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-2xl p-6 sm:p-8">
-            {/* Header */}
             <div className="mb-8">
               <h1 className="text-3xl font-bold text-gray-800">Shopping List</h1>
               <p className="mt-2 text-gray-600">
@@ -51,7 +48,6 @@ export default function ShoppingList() {
               </p>
             </div>
 
-            {/* Threshold Controls */}
             <div className="mb-8 bg-blue-50 rounded-lg p-4">
               <div className="max-w-md space-y-4">
                 <label className="block text-sm font-medium text-gray-700">
@@ -77,7 +73,6 @@ export default function ShoppingList() {
               </div>
             </div>
 
-            {/* Products List */}
             <div className="overflow-hidden rounded-lg shadow ring-1 ring-black ring-opacity-5">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
@@ -128,7 +123,6 @@ export default function ShoppingList() {
                 </tbody>
               </table>
 
-              {/* Empty State */}
               {lowQuantityProducts.length === 0 && (
                 <div className="text-center py-8 bg-gray-50">
                   <p className="text-gray-500">No items need restocking at this threshold</p>
